@@ -10,7 +10,7 @@ class Places(TransportForLondon):
     TransportForLondon.__init__(self)
 
   def info_charge_connectors(self):
-    '''Gets all places of a given type
+    '''Gets all available charge connectors.
 
             Parameters:
                     None
@@ -28,5 +28,27 @@ class Places(TransportForLondon):
       return resp.json()
 
     logging.error("Unable to retrieve info of charge connectors with code '%s' and message: %s" %
+                  (resp.status_code, resp.reason))
+    return None
+
+  def info_charge_stations(self):
+    '''Gets all available charge stations
+
+            Parameters:
+                    None
+
+            Returns:
+                    Array of JSON documents with information about charge stations.
+                    or None if there was an error.
+                    (See https://api-portal.tfl.gov.uk/api-details#api=ReleasedUnifiedAPIProd&operation=Place_GetByType)
+    '''
+    url = "%s/Place/Type/ChargeStation" % self.LUAURL
+    resp = requests.get(url)
+
+    if resp.status_code == 200:
+      logging.debug("Info of charge stations: %s" % resp.json())
+      return resp.json()
+
+    logging.error("Unable to retrieve info of charge stations with code '%s' and message: %s" %
                   (resp.status_code, resp.reason))
     return None

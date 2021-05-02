@@ -35,16 +35,13 @@ class BikePoint(TransportForLondon):
     return None
 
   def info_bikepoint(self, bikepoint_id):
-    '''Gets all bike point locations. The Place object has an addtionalProperties 
-       array which contains the nbBikes, nbDocks and nbSpaces numbers which give 
-       the status of the BikePoint. A mismatch in these numbers 
-       i.e. nbDocks - (nbBikes + nbSpaces) != 0 indicates broken docks.
+    '''Gets the bike point with the given id.
 
             Parameters:
                     None
 
             Returns:
-                    Array of JSON documents with information about the bike points
+                    Array of JSON documents with information about the selected bike point
                     or None if there was an error.
                     (See https://api-portal.tfl.gov.uk/api-details#api=ReleasedUnifiedAPIProd&operation=BikePoint_GetAll)
     '''
