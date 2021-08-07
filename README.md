@@ -7,12 +7,12 @@ The following are the requirements needed to make it work:
 
 - **Python 3** (3.7.3+)
 
-This Python library has been successfully tested with [OSBDET S21R1](https://github.com/raulmarinperez/osbdet/tree/vs21r1) on a Debian 10 x64 host.
+This Python library has been successfully tested with [OSBDET F21R1](https://github.com/raulmarinperez/osbdet/tree/vs21r1) on a Debian 10 x64 host and Ubuntu 20 arm64.
 
 Remember to add the library to the **PYTHONPATH environment variable** if you want to use it from your code or if you want to run the tests Python scripts; you can do so by running the following line within the folder where the repo was cloned:
 
 ```
-$ export PYTHONPATH=$PYTHONPATH:`pwd`
+$ export PYTHONPATH=$PYTHONPATH:`pwd`/src
 ```
 If you want to persist this environment variable, **add it to your user's profile** and it'll be created everytime you log into your computer.
 
@@ -21,7 +21,7 @@ The `BikePoint` class allows you to leverage information about bike point locati
 
 The following are the functions/webmethods wrapped at the moment:
 
-- **info_bikepoint_locations() -** Gets all bike point locations. The Place object has an addtionalProperties array which contains the nbBikes, nbDocks and nbSpaces numbers which givethe status of the BikePoint. A mismatch in these numbers i.e. nbDocks - (nbBikes + nbSpaces) != 0 indicates broken docks.
+- **info_bikepoint_locations() -** Gets all bike point locations. The Place object has an additionalProperties array which contains the nbBikes, nbDocks and nbSpaces numbers which givethe status of the BikePoint. A mismatch in these numbers i.e. nbDocks - (nbBikes + nbSpaces) != 0 indicates broken docks.
 - **info_bikepoint(bikepoint_id) -** Gets the bike point with the given id.
 
 `test_bikepoint.py` let you test this service easily; no credentials are needed. `test_bikepoint.py -h` will give you all the details on how to run it:
@@ -93,4 +93,5 @@ optional arguments:
 ```
 
 ## Changelog
-- **v0.1 (20210502) -** initial release.
+- **v0.1.1 (20210807) -** minor changes.
+- **v0.1   (20210502) -** initial release.
